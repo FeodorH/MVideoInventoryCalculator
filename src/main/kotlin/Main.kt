@@ -49,6 +49,7 @@ fun main(args : Array<String>) {
 
                 lineIndex++
             }
+            println("Been processed $lineIndex lines")
             println("End reading from $inputPath")
         }
 
@@ -59,6 +60,6 @@ fun main(args : Array<String>) {
         }
         println("Program result saved in $outputPath!")
     }catch (e: FileNotFoundException){
-        println("File not found! Please check both file paths")
+        println("Exception: File not found! Please check both file paths")
     }
 }
