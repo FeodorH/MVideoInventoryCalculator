@@ -17,11 +17,13 @@ class RecalculateState(
             }
         }
 
-        repository.saveProduct(Product(
-            groupId = groupId,
-            productId = productId,
-            quantity = quantity + q
-        ))
+        val newQuantity = quantity + q
+        if (newQuantity == 0L) {
+            // Если стало 0, удаляем товар
+            repository.deleteProduct(Product(groupId, productId, 0))
+        } else {
+            repository.saveProduct(Product(groupId, productId, newQuantity))
+        }
     }
 
     fun removeProducts(groupId: String, quantity: Long){
