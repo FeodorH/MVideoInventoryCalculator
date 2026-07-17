@@ -1,9 +1,7 @@
 package org.example
 
 import org.example.di.RepositoryPattern
-import org.example.model.Operation
 import org.example.model.OperationType
-import org.example.model.Product
 import org.example.repository.DataStorage
 import org.example.service.ParsingService
 import org.example.service.RecalculateState
@@ -28,13 +26,13 @@ fun main(args : Array<String>) {
                     val operation = parsing.parseToOperation(line)
 
                     when (operation?.type) {
-                        OperationType.add -> recalculate.addProducts(
+                        OperationType.ADD -> recalculate.addProducts(
                             operation.groupId,
                             operation.productId!!,// из определения парсера
                             operation.quantity
                         )
 
-                        OperationType.delete -> recalculate.removeProducts(
+                        OperationType.DELETE -> recalculate.removeProducts(
                             operation.groupId,
                             operation.quantity
                         )

@@ -7,4 +7,4 @@ data class Operation (
     val quantity : Long,
 )
 
-enum class OperationType {add, delete}
+enum class OperationType {ADD, DELETE}

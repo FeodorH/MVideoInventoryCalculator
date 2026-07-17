@@ -13,17 +13,17 @@ class ParsingService {
                 val groupId = list[0]
                 val productId = list[1]
                 val quantity = list[2].toLong()
-                return Operation(OperationType.add, groupId, productId, quantity)
+                return Operation(OperationType.ADD, groupId, productId, quantity)
             }
 
             2 -> {
                 val groupId = list[0]
                 val quantity = list[1].toLong()
-                return Operation(OperationType.delete, groupId, quantity = quantity)
+                return Operation(OperationType.DELETE, groupId, quantity = quantity)
             }
 
             else -> {
-                throw Exception("Invalid string")
+                throw _root_ide_package_.kotlin.IllegalArgumentException("Invalid string")
             }
         }
         return null
