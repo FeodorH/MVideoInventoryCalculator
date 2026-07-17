@@ -24,6 +24,8 @@ class RecalculateState(
         } else {
             repository.saveProduct(Product(groupId, productId, newQuantity))
         }
+
+        println("Product with id: $productId and quantity: $quantity successfully added to $groupId group")
     }
 
     fun removeProducts(groupId: String, quantity: Long){
@@ -61,5 +63,6 @@ class RecalculateState(
                 quantity = -quantity
             ))
         }
+        println("$quantity products been successfully deleted from $groupId group")
     }
 }

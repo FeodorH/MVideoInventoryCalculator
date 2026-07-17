@@ -19,8 +19,10 @@ fun main(args : Array<String>) {
     val outputPath = args.getOrElse(1) { "interactionFiles/output.csv" }
 
     var lineIndex = 0
+    println("Program started...")
     try {
         File(inputPath).bufferedReader().useLines { lines ->
+            println("Start reading from $inputPath")
             lines.forEach { line ->
                 try {
                     val operation = parsing.parseToOperation(line)
@@ -47,11 +49,15 @@ fun main(args : Array<String>) {
 
                 lineIndex++
             }
+            println("End reading from $inputPath")
         }
 
         File(outputPath).bufferedWriter().use { writer ->
+            println("Start writing from $outputPath")
             report.writeResult(writer)
+            println("End writing from $outputPath")
         }
+        println("Program result saved in $outputPath!")
     }catch (e: FileNotFoundException){
         println("File not found! Please check both file paths")
     }
